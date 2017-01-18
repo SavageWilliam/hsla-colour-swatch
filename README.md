@@ -3,7 +3,12 @@
 A simple tool for exploring HSLa colours! 
 
 ## Usage
-Simply click on a colour to get its hsla (and rgb) value!
-Enter values for hue and opacity to generate a new swatch! 
+
+1) Simply click on a colour to get its hsla (and rgb) value!
+
+2) Enter values for hue and opacity to generate a new swatch! 
+
 Have fun :smile:
+
+![screenshot](./screenshot.png)
 
