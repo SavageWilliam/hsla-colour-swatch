@@ -2,6 +2,22 @@
     outline: none;
 }
 
+input {
+  display: block;
+  width: 3rem;
+}
+
+table {
+  margin: 0 auto;
+  width: 80%;
+  height: calc(100% - (100px));
+}
+
+td {
+  width: 7rem;
+  height: 3rem;
+}
+
 .toolbar {
   margin: 2rem auto;
   display: block;
@@ -23,10 +39,8 @@
   display: inline-block;
   float: left;
   margin: 0.8rem 1.5rem;
-
   height: 4rem;
   width: 5rem;
-
 }
 
 #colorInfo {
@@ -38,25 +52,8 @@
   float:right;
   margin-right: 2rem;
   margin-bottom: 0.8rem;
-
 }
 
-input {
-  display: block;
-  width: 3rem;
-}
-
-table {
-  margin: 0 auto;
-  width: 80%;
-  height: calc(100% - (100px));
-}
-
-td {
-  width: 7rem;
-  height: 3rem;
-}
-
-.container {
-
+.signature {
+  text-align: center;
 }

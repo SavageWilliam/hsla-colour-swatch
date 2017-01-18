@@ -1,6 +1,6 @@
 
 const fillGrid = (hue, opacity) => {
-
+  hue = (!hue) ? 170 : hue;
   opacity = (!opacity) ? 1 : opacity;
 
   for(let x=1; x<10; x++) {
@@ -76,9 +76,9 @@ userValues.addEventListener('input', e => {
   e.preventDefault();
   var hue = document.getElementById('hueValue').value;
   var opacity = document.getElementById('opacityValue').value;
-  if (hue) {
+
     fillGrid(hue, opacity);
-  }
+
 })
 
 setColorDisplay = (rgbString, hslaString) => {
