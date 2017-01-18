@@ -36,19 +36,17 @@ const fillGrid = function(hue, opacity) {
 
     for(let y=1; y<9; y++) {
       let light = (y*8)+4;
-
       let hslaString = `hsla(${hue}, ${sat}%, ${light}%, ${opacity})`;
-
       let rgb = hslToRgb(hue, sat, light);
-
       let rgbString = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity})`
+
 
       let singleSwatch = document.createElement("TD")
 
       singleSwatch.style.backgroundColor = hslaString
 
-      singleSwatch.setAttribute('colour-data', hslaString)
-      console.log(singleSwatch);
+      setAttributes(singleSwatch, {"rbg": rgbString, "hsla": hslaString});
+
 
       singleSwatch.addEventListener('click', function() {
 
@@ -65,6 +63,18 @@ const fillGrid = function(hue, opacity) {
       row.appendChild(singleSwatch);
 
     }
+  }
+}
+
+function setAttributes(el, attrs) {
+  for(var key in attrs) {
+    el.setAttribute(key, attrs[key]);
+  }
+}
+
+function gettAttributes(el, attrs) {
+  for(var key in attrs) {
+    el.getAttribute(key, attrs[key]);
   }
 }
 
