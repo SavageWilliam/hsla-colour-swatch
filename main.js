@@ -1,8 +1,10 @@
 
 const fillGrid = function(hue, opacity) {
-console.log("fillign now!", hue, opacity);
-//  const table = document.getElemntById('swatchTable')
-  for(let x=1; x<9; x++) {
+//  const table = document.getElemntById('swatchTable')v
+  if(!opacity) {
+    opacity = 1;
+  }
+  for(let x=1; x<10; x++) {
 
     let row = document.getElementById(`row-${x}`);
 
@@ -10,9 +12,10 @@ console.log("fillign now!", hue, opacity);
     row.removeChild(row.lastChild);
     }
 
+
     let sat = (x*8)+4;
 
-    for(let y=1; y<9; y++) {
+    for(let y=1; y<10; y++) {
       let light = (y*8)+4;
       let hslaString = `hsla(${hue}, ${sat}%, ${light}%, ${opacity})`;
       let rgb = hslToRgb(hue, sat, light);
@@ -30,10 +33,8 @@ console.log("fillign now!", hue, opacity);
         let rbg = singleSwatch.getAttribute('rgb');
         let hsla = singleSwatch.getAttribute('hsla');
 
-        const clickedDisplay = document.getElementById('clickedDisplay');
-        clickedDisplay.style.backgroundColor = hslaString;
-        const colorInfo = document.getElementById('colorInfo')
-        colorInfo.innerHTML = `<p>${hslaString}</p> <p>${rgbString}</p>`;
+        setColorDisplay(rgbString, hslaString);
+
       });
       row.appendChild(singleSwatch);
     }
@@ -49,6 +50,9 @@ function setAttributes(el, attrs) {
 
 //convert hsl to Rgb
 function hslToRgb(h, s, l){
+  h /= 360;
+  s /= 100;
+  l /= 100;
   let r, g, b;
 
   if(s == 0){
@@ -64,11 +68,11 @@ function hslToRgb(h, s, l){
     }
     let q = l < 0.5 ? l * (1 + s) : l + s - l * s;
     let p = 2 * l - q;
-    r = hue2rgb(p, q, h + 1/3);
-    g = hue2rgb(p, q, h);
-    b = hue2rgb(p, q, h - 1/3);
+    r = parseInt(hue2rgb(p, q, h+1/3)*255),
+    g = parseInt(hue2rgb(p, q, h)*255),
+    b = parseInt(hue2rgb(p, q, h-1/3)*255);
   }
-  return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+  return [r, g, b];
 }
 
 
@@ -77,11 +81,21 @@ const userValues = document.getElementById('userValues')
 
 userValues.addEventListener('input', function(e) {
   e.preventDefault();
-  console.log( userValues.firstChild);
-  var hue = userValues.firstChild.value;
-  console.log(hue);
-  let opacity = opacity.value;
-  filGrid(hue, opacity);
+  var hue = document.getElementById('hueValue').value;
+  var opacity = document.getElementById('opacityValue').value;
+  console.log(opacity, "OP!");
+  if(hue) {
+    fillGrid(hue, opacity);
+  }
 })
 
+function setColorDisplay(rgbString, hslaString) {
+  console.log("color display");
+  const clickedDisplay = document.getElementById('clickedDisplay');
+  clickedDisplay.style.backgroundColor = hslaString;
+  const colorInfo = document.getElementById('colorInfo')
+  colorInfo.innerHTML = `<p>${hslaString}</p> <p>${rgbString}</p>`;
+}
+
+window.onLoad = setColorDisplay( 'rgba(68, 196, 175, 1)', 'hsla(170, 52%, 52%, 1)')
 window.onload = fillGrid(170, 1);
