@@ -20,25 +20,17 @@ const fillGrid = function(hue, opacity) {
 
       setAttributes(singleSwatch, {"rbg": rgbString, "hsla": hslaString});
 
-
       singleSwatch.addEventListener('click', function() {
 
         let rbg = singleSwatch.getAttribute('rgb');
         let hsla = singleSwatch.getAttribute('hsla');
-        console.log(hsla);
 
-
+        const clickedColor = document.getElementById('clickedColor');
+        clickedColor.style.backgroundColor = hslaString;
         const colorInfo = document.getElementById('colorInfo')
-
-        colorInfo.style.backgroundColor = hslaString;
-        colorInfo.innerHTML =
-          `<p>${hslaString}, ${rgbString}</p>`
-
-
+        colorInfo.innerHTML = `<p>${hslaString}, ${rgbString}</p>`;
       });
-
       row.appendChild(singleSwatch);
-
     }
   }
 }

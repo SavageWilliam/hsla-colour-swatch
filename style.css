@@ -1,4 +1,22 @@
+
+
+#clickedColor {
+  height: 7rem;
+  width: 7rem;
+}
+
+.landing {
+  height: 100vh;
+}
+
+#toolbar {
+  margin: 0 auto;
+}
+
+table {
+  margin: 0 auto;
+}
 td {
-  height:30px;
-  width:30px;
+  width:6rem;
+  height: 2em;
 }
