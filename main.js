@@ -1,6 +1,5 @@
 
 const fillGrid = function(hue, opacity) {
-//  const table = document.getElemntById('swatchTable')v
   if(!opacity) {
     opacity = 1;
   }
@@ -11,7 +10,6 @@ const fillGrid = function(hue, opacity) {
     while (row.hasChildNodes()) {
     row.removeChild(row.lastChild);
     }
-
 
     let sat = (x*8)+4;
 
