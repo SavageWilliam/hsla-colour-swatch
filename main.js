@@ -1,6 +1,53 @@
 
 let hue = 170, opacity = 1;
-const toolbar = document.getElementById('toolbar')
+
+const fillGrid = function(hue, opacity) {
+
+  for(let x=1; x<9; x++) {
+    let row = document.getElementById(`row-${x}`);
+    let sat = (x*8)+4;
+
+    for(let y=1; y<9; y++) {
+      let light = (y*8)+4;
+      let hslaString = `hsla(${hue}, ${sat}%, ${light}%, ${opacity})`;
+      let rgb = hslToRgb(hue, sat, light);
+      let rgbString = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity})`
+
+
+      let singleSwatch = document.createElement("TD")
+
+      singleSwatch.style.backgroundColor = hslaString
+
+      setAttributes(singleSwatch, {"rbg": rgbString, "hsla": hslaString});
+
+
+      singleSwatch.addEventListener('click', function() {
+
+        let rbg = singleSwatch.getAttribute('rgb');
+        let hsla = singleSwatch.getAttribute('hsla');
+        console.log(hsla);
+
+
+        const colorInfo = document.getElementById('colorInfo')
+
+        colorInfo.style.backgroundColor = hslaString;
+        colorInfo.innerHTML =
+          `<p>${hslaString}, ${rgbString}</p>`
+
+
+      });
+
+      row.appendChild(singleSwatch);
+
+    }
+  }
+}
+
+function setAttributes(el, attrs) {
+  for(var key in attrs) {
+    el.setAttribute(key, attrs[key]);
+  }
+}
 
 //convert hsl to Rgb
 function hslToRgb(h, s, l){
@@ -26,56 +73,6 @@ function hslToRgb(h, s, l){
   return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
 }
 
-const tableSwatch = document.getElementById('table-swatch');
 
-const fillGrid = function(hue, opacity) {
-
-  for(let x=1; x<9; x++) {
-    let row = document.getElementById(`row-${x}`);
-    let sat = (x*8)+4;
-
-    for(let y=1; y<9; y++) {
-      let light = (y*8)+4;
-      let hslaString = `hsla(${hue}, ${sat}%, ${light}%, ${opacity})`;
-      let rgb = hslToRgb(hue, sat, light);
-      let rgbString = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity})`
-
-
-      let singleSwatch = document.createElement("TD")
-
-      singleSwatch.style.backgroundColor = hslaString
-
-      setAttributes(singleSwatch, {"rbg": rgbString, "hsla": hslaString});
-
-
-      singleSwatch.addEventListener('click', function() {
-
-        let colour = singleSwatch.getAttribute('colour-data');
-
-        let colorInfo = document.createElement("DIV");
-        console.log(colorInfo);
-        colorInfo.style.backgroundColor = hslaString;
-        colorInfo.setAttribute('colour', hslaString);
-
-        toolbar.appendChild(singleSwatchDiv);
-      });
-
-      row.appendChild(singleSwatch);
-
-    }
-  }
-}
-
-function setAttributes(el, attrs) {
-  for(var key in attrs) {
-    el.setAttribute(key, attrs[key]);
-  }
-}
-
-function gettAttributes(el, attrs) {
-  for(var key in attrs) {
-    el.getAttribute(key, attrs[key]);
-  }
-}
 
 window.onload = fillGrid(170, 1);
