@@ -3,30 +3,41 @@
   <head>
     <meta charset="utf-8">
     <title>Beautiful Website Colours</title>
+      <link rel='stylesheet' href='normalize.css'>
     <link rel='stylesheet' href='style.css'>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Josefin+Slab:400,600" rel="stylesheet">
+
   </head>
   <body>
+  <div id="slider"></div>
+    <div  class='toolbar' id='toolbar'>
+      <h1>Hsla Colour finder</h1>
 
-    <div class='landing'>
-      
-      <div id='toolbar'>
-        <div id='clickedColor'>
-        </div>
-        <p id='colorInfo'>&nbsp;</p>
+      <div id='clickedDisplay'>
       </div>
+      <span id='colorInfo'>&nbsp;</span>
 
-      <table>
-        <tr id='row-1'></tr>
-        <tr id='row-2'></tr>
-        <tr id='row-3'></tr>
-        <tr id='row-4'></tr>
-        <tr id='row-5'></tr>
-        <tr id='row-6'></tr>
-        <tr id='row-7'></tr>
-        <tr id='row-8'></tr>
-      </table>
+
+      <form id='userValues' onSubmit="event.preventDefault(); fillGrid(hue.value, opacity.value)" preventDefault>
+        <input type="number" name="hue" min="0" max="360">Hue (0-360)</input>
+        <input type="number" name="opacity" step="0.01">Opacity (0-1)</input>
+        <input type="submit">
+      </form>
 
     </div>
+
+    <table id='swatchTable'>
+      <tr id='row-1'></tr>
+      <tr id='row-2'></tr>
+      <tr id='row-3'></tr>
+      <tr id='row-4'></tr>
+      <tr id='row-5'></tr>
+      <tr id='row-6'></tr>
+      <tr id='row-7'></tr>
+      <tr id='row-8'></tr>
+    </table>
+
+
   <script type="text/javascript" src="main.js"></script>
   </body>
 </html>

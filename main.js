@@ -1,10 +1,15 @@
 
-let hue = 170, opacity = 1;
-
 const fillGrid = function(hue, opacity) {
-
+console.log("fillign now!", hue, opacity);
+//  const table = document.getElemntById('swatchTable')
   for(let x=1; x<9; x++) {
+
     let row = document.getElementById(`row-${x}`);
+
+    while (row.hasChildNodes()) {
+    row.removeChild(row.lastChild);
+    }
+
     let sat = (x*8)+4;
 
     for(let y=1; y<9; y++) {
@@ -25,15 +30,16 @@ const fillGrid = function(hue, opacity) {
         let rbg = singleSwatch.getAttribute('rgb');
         let hsla = singleSwatch.getAttribute('hsla');
 
-        const clickedColor = document.getElementById('clickedColor');
-        clickedColor.style.backgroundColor = hslaString;
+        const clickedDisplay = document.getElementById('clickedDisplay');
+        clickedDisplay.style.backgroundColor = hslaString;
         const colorInfo = document.getElementById('colorInfo')
-        colorInfo.innerHTML = `<p>${hslaString}, ${rgbString}</p>`;
+        colorInfo.innerHTML = `<p>${hslaString}</p> <p>${rgbString}</p>`;
       });
       row.appendChild(singleSwatch);
     }
   }
 }
+
 
 function setAttributes(el, attrs) {
   for(var key in attrs) {
@@ -66,5 +72,16 @@ function hslToRgb(h, s, l){
 }
 
 
+
+const userValues = document.getElementById('userValues')
+
+userValues.addEventListener('input', function(e) {
+  e.preventDefault();
+  console.log( userValues.firstChild);
+  var hue = userValues.firstChild.value;
+  console.log(hue);
+  let opacity = opacity.value;
+  filGrid(hue, opacity);
+})
 
 window.onload = fillGrid(170, 1);

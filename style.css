@@ -1,22 +1,53 @@
 
-
-#clickedColor {
-  height: 7rem;
-  width: 7rem;
+.toolbar {
+  margin: 2rem auto;
+  display: block;
+  width: 70%;
+  border: 1px solid #000;
+  border-radius: 1rem;
+  height: 6rem;
+  padding-top: 0.5rem;
 }
 
-.landing {
-  height: 100vh;
+.toolbar h1 {
+  font-family: 'Josefin Slab', serif;
+  font-weight: 600;
+  float: left;
+  padding-left: 0.6rem;
 }
 
-#toolbar {
-  margin: 0 auto;
+#clickedDisplay {
+  display: inline-block;
+  float: left;
+  margin: 1.5rem;
+  margin-top: 0.8rem;
+  height: 4rem;
+  width: 5rem;
+}
+
+#colorInfo {
+  float:left;
+}
+
+#userValues {
+  float:right;
+}
+
+input {
+  display: block;
 }
 
 table {
   margin: 0 auto;
+  width: 80%;
+  height: calc(100% - (100px));
 }
+
 td {
-  width:6rem;
-  height: 2em;
+  width: 7rem;
+  height: 3rem;
+}
+
+.container {
+
 }
