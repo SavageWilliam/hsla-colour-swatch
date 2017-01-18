@@ -1,8 +1,8 @@
 
-const fillGrid = function(hue, opacity) {
-  if(!opacity) {
-    opacity = 1;
-  }
+const fillGrid = (hue, opacity) => {
+
+  opacity = (!opacity) ? 1 : opacity;
+
   for(let x=1; x<10; x++) {
 
     let row = document.getElementById(`row-${x}`);
@@ -11,14 +11,12 @@ const fillGrid = function(hue, opacity) {
     row.removeChild(row.lastChild);
     }
 
-    let sat = (x*8)+4;
-
     for(let y=1; y<10; y++) {
       let light = (y*8)+4;
-      let hslaString = `hsla(${hue}, ${sat}%, ${light}%, ${opacity})`;
+      let sat = (x*8)+4;
       let rgb = hslToRgb(hue, sat, light);
+      let hslaString = `hsla(${hue}, ${sat}%, ${light}%, ${opacity})`;
       let rgbString = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity})`
-
 
       let singleSwatch = document.createElement("TD")
 
@@ -26,7 +24,7 @@ const fillGrid = function(hue, opacity) {
 
       setAttributes(singleSwatch, {"rbg": rgbString, "hsla": hslaString});
 
-      singleSwatch.addEventListener('click', function() {
+      singleSwatch.addEventListener('click', () => {
 
         let rbg = singleSwatch.getAttribute('rgb');
         let hsla = singleSwatch.getAttribute('hsla');
@@ -39,15 +37,13 @@ const fillGrid = function(hue, opacity) {
   }
 }
 
-
-function setAttributes(el, attrs) {
+setAttributes =  (el, attrs) => {
   for(var key in attrs) {
     el.setAttribute(key, attrs[key]);
   }
 }
 
-//convert hsl to Rgb
-function hslToRgb(h, s, l){
+hslToRgb = (h, s, l) => {
   h /= 360;
   s /= 100;
   l /= 100;
@@ -56,7 +52,7 @@ function hslToRgb(h, s, l){
   if(s == 0){
       r = g = b = l; // achromatic
   }else{
-    const hue2rgb = function hue2rgb(p, q, t){
+    const hue2rgb = (p, q, t) => {
       if(t < 0) t += 1;
       if(t > 1) t -= 1;
       if(t < 1/6) return p + (q - p) * 6 * t;
@@ -74,20 +70,18 @@ function hslToRgb(h, s, l){
 }
 
 
-
 const userValues = document.getElementById('userValues')
 
-userValues.addEventListener('input', function(e) {
+userValues.addEventListener('input', e => {
   e.preventDefault();
   var hue = document.getElementById('hueValue').value;
   var opacity = document.getElementById('opacityValue').value;
-  console.log(opacity, "OP!");
-  if(hue) {
+  if (hue) {
     fillGrid(hue, opacity);
   }
 })
 
-function setColorDisplay(rgbString, hslaString) {
+setColorDisplay = (rgbString, hslaString) => {
   console.log("color display");
   const clickedDisplay = document.getElementById('clickedDisplay');
   clickedDisplay.style.backgroundColor = hslaString;
