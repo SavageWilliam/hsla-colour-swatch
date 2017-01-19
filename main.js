@@ -3,7 +3,7 @@ const fillGrid = (hue, opacity) => {
   hue = (!hue) ? 170 : hue;
   opacity = (!opacity) ? 1 : opacity;
 
-  for(let x=1; x<10; x++) {
+  for(let x=1; x<9; x++) {
 
     let row = document.getElementById(`row-${x}`);
 
@@ -11,7 +11,7 @@ const fillGrid = (hue, opacity) => {
     row.removeChild(row.lastChild);
     }
 
-    for(let y=1; y<10; y++) {
+    for(let y=1; y<9; y++) {
       let light = (y*8)+4;
       let sat = (x*8)+4;
       let rgb = hslToRgb(hue, sat, light);
