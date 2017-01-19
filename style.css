@@ -23,7 +23,7 @@ td {
   display: block;
   width: 70%;
   border: 1px solid #000;
-  border-radius: 1rem;
+  border-radius: 0.2rem;
   height: 6rem;
   padding-top: 0.5rem;
 }
