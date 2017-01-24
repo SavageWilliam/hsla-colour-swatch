@@ -13,6 +13,7 @@ table {
   height: calc(100% - (100px));
 }
 
+
 td {
   width: 7rem;
   height: 2.6rem;
@@ -29,7 +30,7 @@ td {
   display: block;
   width: 70%;
   border: 1px solid #000;
-  border-radius: 1rem;
+  border-radius: 0.2rem;
   height: 6rem;
   padding-top: 0.5rem;
 }

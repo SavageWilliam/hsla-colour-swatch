@@ -3,10 +3,10 @@ const fillGrid = (hue, opacity) => {
   hue = (!hue) ? 170 : hue;
   opacity = (!opacity) ? 1 : opacity;
 
-  for(let x=1; x<10; x++) {
+  for(let x=1; x<9; x++) {
 
     let row = document.getElementById(`row-${x}`);
-
+    
     while (row.hasChildNodes()) {
     row.removeChild(row.lastChild);
     }
