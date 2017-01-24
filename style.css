@@ -1,5 +1,5 @@
 *:focus {
-    outline: none;
+  outline: none;
 }
 
 input {
@@ -15,7 +15,13 @@ table {
 
 td {
   width: 7rem;
-  height: 3rem;
+  height: 2.6rem;
+}
+
+@media screen and (max-width: 680px){
+  td {
+    height: 6rem;
+  }
 }
 
 .toolbar {
@@ -33,6 +39,7 @@ td {
   font-weight: 600;
   float: left;
   padding-left: 0.6rem;
+  user-select: none;
 }
 
 #clickedDisplay {

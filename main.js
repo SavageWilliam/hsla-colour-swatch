@@ -12,8 +12,8 @@ const fillGrid = (hue, opacity) => {
     }
 
     for(let y=1; y<10; y++) {
-      let light = (y*8)+4;
-      let sat = (x*8)+4;
+      let light = (y*8+3);
+      let sat = (x*10)-1;
       let rgb = hslToRgb(hue, sat, light);
       let hslaString = `hsla(${hue}, ${sat}%, ${light}%, ${opacity})`;
       let rgbString = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${opacity})`
@@ -28,7 +28,6 @@ const fillGrid = (hue, opacity) => {
 
         let rbg = singleSwatch.getAttribute('rgb');
         let hsla = singleSwatch.getAttribute('hsla');
-
         setColorDisplay(rgbString, hslaString);
 
       });

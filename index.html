@@ -15,8 +15,8 @@
       </div>
       <span id='colorInfo'>&nbsp;</span>
       <form id='userValues' onSubmit="event.preventDefault(); fillGrid(hue.value, opacity.value)" preventDefault>
-        <input id='hueValue' type="number" name="hue" min="0" max="360">Hue (0-360)</input>
-        <input id='opacityValue' type="number" name="opacity" step="0.01" max="1">Opacity (0-1)</input>
+        <input id='hueValue' type="number" name="hue" min="0" max="360" placeholder="170">Hue (0-360)</input>
+        <input id='opacityValue' type="number" name="opacity" step="0.01" max="1" placeholder="1">Opacity (0-1)</input>
       </form>
     </div>
 
@@ -29,6 +29,7 @@
       <tr id='row-6'></tr>
       <tr id='row-7'></tr>
       <tr id='row-8'></tr>
+      <tr id='row-9'></tr>
     </table>
 
     <p class='signature'>Click on a colour to get it's hsla value. &copy; William Savage</p>
